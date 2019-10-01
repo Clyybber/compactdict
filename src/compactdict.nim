@@ -59,7 +59,7 @@ template `[]=`(s: SparseArray, i: int, val: int) =
 proc c_memset(p: pointer, value: cint, size: csize): pointer {.
   importc: "memset", header: "<string.h>", discardable.}
 proc nimSetMem(a: pointer, v: cint, size: Natural) {.inline.} =
-  c_memset(a, v, size)
+  c_memset(a, v, size.csize)
 
 proc findEmptySlot[K, V](d: Dict[K, V], h: Hash): int {.inline.}
 
